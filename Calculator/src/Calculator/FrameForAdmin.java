@@ -86,7 +86,8 @@ public class FrameForAdmin extends JFrame {
         buttonForNumber.addActionListener(new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    textForPay.setText(String.valueOf(numberForButton(Integer.parseInt(textFieldForNumber.getText()),Integer.parseInt(textFieldForCartridge.getText()))));
+                    JLabel textFieldForCartridge = null;
+					textForPay.setText(String.valueOf(numberForButton(Integer.parseInt(textFieldForNumber.getText()),Integer.parseInt(textFieldForCartridge.getText()))));
                 }catch (NumberFormatException e1){
                     JOptionPane.showMessageDialog(null,"¬ведите число!");
                 }
