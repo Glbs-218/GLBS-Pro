@@ -42,7 +42,7 @@ public class FrameUserSelection extends JFrame {
         JButton buttonForAdmin = new JButton("Администратор");
         buttonForAdmin.addActionListener(new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
-                FrameForAdminPassword frameForAdmin = new FrameForAdminPassword();
+                FrameForAdmin1 frameForAdmin = new FrameForAdmin1();
             }
         });
         GridBagConstraintsForAdmin gridBagConstraintsForAdmin = new GridBagConstraintsForAdmin();

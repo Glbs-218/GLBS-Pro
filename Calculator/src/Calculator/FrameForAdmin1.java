@@ -6,9 +6,9 @@ import java.awt.event.ActionEvent;
 
 
 
-public class FrameForAdminPassword extends JFrame {
-    FrameForAdminPassword(){
-    	super("јвторизаци€");
+public class FrameForAdmin1 extends JFrame {
+    FrameForAdmin1(){
+    	super("¬ход в админимтратор");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300,180);
         setLocationRelativeTo(null);
@@ -16,13 +16,8 @@ public class FrameForAdminPassword extends JFrame {
         JPanel panelForFrameForAdminPassword = new JPanel();
         panelForFrameForAdminPassword.setLayout(new GridLayout(4,2,10,10));
         
-        JLabel labelForPanelForFrameForAdmin = new JLabel("¬ведите логин");
-        labelForPanelForFrameForAdmin.setHorizontalAlignment(JLabel.CENTER);
-        panelForFrameForAdminPassword.add(labelForPanelForFrameForAdmin);
 
-        final JPasswordField passwordField = new JPasswordField();
-
-        panelForFrameForAdminPassword.add(passwordField);
+   
 
         JLabel labelForPanelForFrameForAdmin1 = new JLabel("¬ведите пароль");
         labelForPanelForFrameForAdmin1.setHorizontalAlignment(JLabel.CENTER);
@@ -37,8 +32,8 @@ public class FrameForAdminPassword extends JFrame {
         buttonForPanelForFrameForAdmin.setHorizontalAlignment(JButton.CENTER);
         buttonForPanelForFrameForAdmin.addActionListener(new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
-                if (password(String.valueOf(passwordField.getPassword()))==true) {
-                    FrameUserSelection frameUserSelection = new FrameUserSelection();
+                if (password(String.valueOf(passwordField1.getPassword()))==true) {
+                    FrameForAdmin frameForAdmin = new FrameForAdmin();
                     dispose();
                 }
                 else {
@@ -54,6 +49,6 @@ public class FrameForAdminPassword extends JFrame {
         setVisible(true);
     }
     public boolean password(String PAS){
-        return PAS.equals("2020");
+        return PAS.equals("admin");
     }
 }
