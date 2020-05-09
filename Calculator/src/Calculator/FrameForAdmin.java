@@ -64,7 +64,7 @@ public class FrameForAdmin extends JFrame {
         panelForFrameForAdmin.add(labelForNumber);
         final JTextField textFieldForNumber = new JTextField();
         panelForFrameForAdmin.add(textFieldForNumber);
-        JLabel labelForPackaging = new JLabel("штук");
+        JLabel labelForPackaging = new JLabel("гр.");
         panelForFrameForAdmin.add(labelForPackaging);
 
 
@@ -82,17 +82,24 @@ public class FrameForAdmin extends JFrame {
             }
         });
 
-        JButton buttonForNumber = new JButton("Расчет");
+       // JButton buttonForNumber = new JButton("Расчет");
+       // buttonForNumber.addActionListener(new AbstractAction() {
+           //     try {
+				//	JLabel textFieldForCartridge = null;
+					//textForPay.setText(String.valueOf(textForPay(Integer.parseInt(textFieldForNumber.getText()),Integer.parseInt(textFieldForCartridge.getText()))));
+              //  }catch (NumberFormatException e1){
+               //     JOptionPane.showMessageDialog(null,"Введите число!");
+               // }
+
+          //  }
+     //   });
+        final JButton buttonForNumber= new JButton("Расчет");
         buttonForNumber.addActionListener(new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
-                try {
-                    JLabel textFieldForCartridge = null;
-					textForPay.setText(String.valueOf(numberForButton(Integer.parseInt(textFieldForNumber.getText()),Integer.parseInt(textFieldForCartridge.getText()))));
-                }catch (NumberFormatException e1){
-                    JOptionPane.showMessageDialog(null,"Введите число!");
+            	
+				textForPay.setText(String.format("%.1f",textForPay(textFieldForNumber.getText(),textAreaForNumber2.getText(),textAreaForNumber3.getText(),textAreaForNumber4.getText(),textFieldForNumber1.getText(),textAreaForLoad.getText())));
                 }
-
-            }
+            
         });
 
 
@@ -114,7 +121,8 @@ public class FrameForAdmin extends JFrame {
 
         setVisible(true);
     }
-    public int numberForButton(int TEXTFIELDNUMBER,int TEXTFIELDCARTRIDGE){
-        return TEXTFIELDNUMBER*300+TEXTFIELDCARTRIDGE*1500;
+    public double textForPay(String textFieldForNumber,String textFieldForNumber1,String textAreaForNumber2,String textAreaForNumber3,String textAreaForNumber4, String textAreaForLoad){
+        return ((((Double.parseDouble(textFieldForNumber))/140)*200)+(Double.parseDouble(textFieldForNumber1))*280+
+        		+(390*((Double.parseDouble(textAreaForNumber2)+Double.parseDouble(textAreaForNumber3)+Double.parseDouble(textAreaForNumber4)+Double.parseDouble(textAreaForLoad))/70)))/10;
     }
 }
