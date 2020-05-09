@@ -71,32 +71,32 @@ public class FrameForWorker extends JFrame {
         panelForTextAreas.add(textAreaForPaper);
         JLabel label1 = new JLabel("упаковок");
         panelForTextAreas.add(label1);
-
-        JLabel labelForCartridge = new JLabel("Расход тонера");
-        panelForTextAreas.add(labelForCartridge);
-        final JTextArea textAreaForCartridge = new JTextArea();
-        panelForTextAreas.add(textAreaForCartridge);
-        JLabel label2 = new JLabel("штук");
+        
+        JLabel labelForLoad0 = new JLabel("Расход тонера");
+        panelForTextAreas.add(labelForLoad0);
+        final JTextArea textAreaForLoad0 = new JTextArea();
+        panelForTextAreas.add(textAreaForLoad0);
+        JLabel label2 = new JLabel("гр.");
         panelForTextAreas.add(label2);
         
-        JLabel labelForCartridge1 = new JLabel("Расход красного");
-        panelForTextAreas.add(labelForCartridge1);
-        final JTextArea textAreaForCartridge1 = new JTextArea();
-        panelForTextAreas.add(textAreaForCartridge1);
+        JLabel labelForLoad1 = new JLabel("Расход красного");
+        panelForTextAreas.add(labelForLoad1);
+        final JTextArea textAreaForLoad1 = new JTextArea();
+        panelForTextAreas.add(textAreaForLoad1);
         JLabel label3 = new JLabel("мл.");
         panelForTextAreas.add(label3);
         
-        JLabel labelForCartridge2 = new JLabel("Расход синего");
-        panelForTextAreas.add(labelForCartridge2);
-        final JTextArea textAreaForCartridge2 = new JTextArea();
-        panelForTextAreas.add(textAreaForCartridge2);
+        JLabel labelForLoad2 = new JLabel("Расход синего");
+        panelForTextAreas.add(labelForLoad2);
+        final JTextArea textAreaForLoad2 = new JTextArea();
+        panelForTextAreas.add(textAreaForLoad2);
         JLabel label5 = new JLabel("мл.");
         panelForTextAreas.add(label5);
         
-        JLabel labelForCartridge3 = new JLabel("Расход черного");
-        panelForTextAreas.add(labelForCartridge3);
-        final JTextArea textAreaForCartridge3 = new JTextArea();
-        panelForTextAreas.add(textAreaForCartridge3);
+        JLabel labelForLoad3 = new JLabel("Расход черного");
+        panelForTextAreas.add(labelForLoad3);
+        final JTextArea textAreaForLoad3 = new JTextArea();
+        panelForTextAreas.add(textAreaForLoad3);
         JLabel label6 = new JLabel("мл.");
         panelForTextAreas.add(label6);
    
@@ -112,10 +112,14 @@ public class FrameForWorker extends JFrame {
         final JButton buttonCalculation = new JButton("Расчет");
         buttonCalculation.addActionListener(new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
-               textAreaForPaper.setText(String.format("%.1f",calculationsPaper(textFieldForBlackAndWhitePrinting.getText(),textFieldForColorPrinting.getText())));
-                textAreaForCartridge.setText(String.format("%.1f",calculationsCartridge(textFieldForBlackAndWhitePrinting.getText(),textFieldForColorPrinting.getText())));
+                textAreaForPaper.setText(String.format("%.1f",calculationsPaper(textFieldForBlackAndWhitePrinting.getText(),textFieldForColorPrinting.getText())));
                 textAreaForLoad.setText(String.format("%.1f",calculationsLoad(textFieldForBlackAndWhitePrinting.getText(),textFieldForColorPrinting.getText(),String.valueOf(comboBoxForModel.getSelectedItem()))));
+                textAreaForLoad1.setText(String.format("%.1f",calculationsLoad1(textFieldForBlackAndWhitePrinting.getText(),textFieldForColorPrinting.getText(),String.valueOf(comboBoxForModel.getSelectedItem()))));
+                textAreaForLoad2.setText(String.format("%.1f",calculationsLoad2(textFieldForBlackAndWhitePrinting.getText(),textFieldForColorPrinting.getText(),String.valueOf(comboBoxForModel.getSelectedItem()))));
+                textAreaForLoad3.setText(String.format("%.1f",calculationsLoad3(textFieldForBlackAndWhitePrinting.getText(),textFieldForColorPrinting.getText(),String.valueOf(comboBoxForModel.getSelectedItem()))));
+                textAreaForLoad0.setText(String.format("%.1f",calculationsLoad0(textFieldForBlackAndWhitePrinting.getText(),textFieldForColorPrinting.getText(),String.valueOf(comboBoxForModel.getSelectedItem()))));           
             }
+            
         });
         gridBagLayout.setConstraints(buttonCalculation,gridButtonCalculation);
         panelForWorker.add(buttonCalculation);
@@ -132,20 +136,18 @@ public class FrameForWorker extends JFrame {
         setVisible(true);
     }
     public double calculationsPaper(String BLACKANDWHITE,String COLOR){
-        return Double.parseDouble(BLACKANDWHITE)/500+Double.parseDouble(COLOR)/500;
+        return (Double.parseDouble(BLACKANDWHITE)/500+Double.parseDouble(COLOR)/500)*0.5;
     }
-    public double calculationsCartridge(String BLACKANDWHITE,String COLOR){
-        return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))/1500;
-    }
+
     public double calculationsLoad(String BLACKANDWHITE,String COLOR,String MODEL){
         if (MODEL=="HP LaserJet Pro M104a"){
-            return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))/20000*100;
+            return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))*0;
         }else {
                 if (MODEL=="Xerox Phaser 3020BI"){
-                    return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))/25000*100;
+                    return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))*0;
                 }else {
                     if (MODEL=="Canon i-SENSYS LBP7010C"){
-                        return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))/30000*100;
+                        return (((Double.parseDouble(COLOR)))*0.3)/4;
                     }else {
                         return 0;
                     }
@@ -154,4 +156,68 @@ public class FrameForWorker extends JFrame {
 
 
     }
+    
+    public double calculationsLoad1(String BLACKANDWHITE,String COLOR,String MODEL){
+        if (MODEL=="HP LaserJet Pro M104a"){
+            return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))*0;
+        }else {
+                if (MODEL=="Xerox Phaser 3020BI"){
+                    return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))*0;
+                }else {
+                    if (MODEL=="Canon i-SENSYS LBP7010C"){
+                        return (((Double.parseDouble(COLOR)))*0.3)/4;
+                    }else {
+                        return 0;
+                    }
+                }
+        }
+    }
+    
+    public double calculationsLoad2(String BLACKANDWHITE,String COLOR,String MODEL){
+        if (MODEL=="HP LaserJet Pro M104a"){
+            return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))*0;
+        }else {
+                if (MODEL=="Xerox Phaser 3020BI"){
+                    return (Double.parseDouble(BLACKANDWHITE)+Double.parseDouble(COLOR))*0;
+                }else {
+                    if (MODEL=="Canon i-SENSYS LBP7010C"){
+                        return (((Double.parseDouble(COLOR)))*0.3)/4;
+                    }else {
+                        return 0;
+                    }
+                }
+        }
+    }
+    
+    public double calculationsLoad3(String BLACKANDWHITE,String COLOR,String MODEL){
+        if (MODEL=="HP LaserJet Pro M104a"){
+            return (Double.parseDouble(BLACKANDWHITE))*0;
+        }else {
+                if (MODEL=="Xerox Phaser 3020BI"){
+                    return (Double.parseDouble(BLACKANDWHITE))*0;
+                }else {
+                    if (MODEL=="Canon i-SENSYS LBP7010C"){
+                        return ((((Double.parseDouble(COLOR)))*0.3)/4);
+                    }else {
+                        return 0;
+                    }
+                }
+        }
+    }
+    public double calculationsLoad0(String BLACKANDWHITE,String COLOR,String MODEL){
+        if (MODEL=="HP LaserJet Pro M104a"){
+            return (Double.parseDouble(BLACKANDWHITE))*0.048;
+        }else {
+                if (MODEL=="Xerox Phaser 3020BI"){
+                    return (Double.parseDouble(BLACKANDWHITE))*0.050;
+                }else {
+                    if (MODEL=="Canon i-SENSYS LBP7010C"){
+                        return (((Double.parseDouble(COLOR)))*0);
+                    }else {
+                        return 0;
+                    }
+                }
+        }
+    }
+    
 }
