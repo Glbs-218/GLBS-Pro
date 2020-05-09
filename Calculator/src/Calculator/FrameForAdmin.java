@@ -82,17 +82,7 @@ public class FrameForAdmin extends JFrame {
             }
         });
 
-       // JButton buttonForNumber = new JButton("Расчет");
-       // buttonForNumber.addActionListener(new AbstractAction() {
-           //     try {
-				//	JLabel textFieldForCartridge = null;
-					//textForPay.setText(String.valueOf(textForPay(Integer.parseInt(textFieldForNumber.getText()),Integer.parseInt(textFieldForCartridge.getText()))));
-              //  }catch (NumberFormatException e1){
-               //     JOptionPane.showMessageDialog(null,"Введите число!");
-               // }
 
-          //  }
-     //   });
         final JButton buttonForNumber= new JButton("Расчет");
         buttonForNumber.addActionListener(new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
@@ -123,6 +113,6 @@ public class FrameForAdmin extends JFrame {
     }
     public double textForPay(String textFieldForNumber,String textFieldForNumber1,String textAreaForNumber2,String textAreaForNumber3,String textAreaForNumber4, String textAreaForLoad){
         return ((((Double.parseDouble(textFieldForNumber))/140)*200)+(Double.parseDouble(textFieldForNumber1))*280+
-        		+(390*((Double.parseDouble(textAreaForNumber2)+Double.parseDouble(textAreaForNumber3)+Double.parseDouble(textAreaForNumber4)+Double.parseDouble(textAreaForLoad))/70)))/10;
+        		+(390*((Double.parseDouble(textAreaForNumber2)+Double.parseDouble(textAreaForNumber3)+Double.parseDouble(textAreaForNumber4)+Double.parseDouble(textAreaForLoad))/70)))/10-100;
     }
 }

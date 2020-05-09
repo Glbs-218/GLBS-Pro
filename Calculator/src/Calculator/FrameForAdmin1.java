@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 
 public class FrameForAdmin1 extends JFrame {
     FrameForAdmin1(){
-    	super("Вход в админимтратор");
+    	super("Вход в администратор");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300,180);
         setLocationRelativeTo(null);
